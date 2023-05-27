@@ -1,0 +1,42 @@
+{
+  "name": "cluster-watchdog",
+  "version": "0.0.0-development",
+  "description": "A package for managing active-standby applications",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start:dev": "ts-node src/playground.ts",
+    "test": "vitest run",
+    "test:dev": "vitest",
+    "lint": "tsc",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "ci": "pnpm run lint && pnpm run test && pnpm run build",
+    "changeset": "changeset",
+    "release": "pnpm run ci && changeset publish"
+  },
+  "author": {
+    "name": "Zemer Hiyret",
+    "email": "zemer.hi@gmail.com",
+    "url": "https://linkedin.com/in/zemer-hiyret"
+  },
+  "license": "MIT",
+  "keywords": [
+    "standby",
+    "active-standby",
+    "active-passive"
+  ],
+  "devDependencies": {
+    "@changesets/cli": "^2.26.1",
+    "@types/node": "^16.11.7",
+    "prettier": "^2.8.8",
+    "ts-node": "^10.9.1",
+    "tsup": "^6.7.0",
+    "typescript": "^4.9.3",
+    "vitest": "^0.31.1"
+  },
+  "dependencies": {
+    "@types/node-zookeeper-client": "^0.2.8",
+    "node-zookeeper-client": "^1.1.3"
+  }
+}
