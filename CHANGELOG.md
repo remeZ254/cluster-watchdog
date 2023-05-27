@@ -1,5 +1,11 @@
 # cluster-watchdog
 
+## 0.0.2
+
+### Patch Changes
+
+- 1fa1a18: move @types/node-zookeeper-client to devDependencies
+
 ## 0.0.1
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "cluster-watchdog",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A package for managing active-standby applications",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
