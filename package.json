@@ -26,6 +26,8 @@
   },
   "license": "MIT",
   "keywords": [
+    "cluster",
+    "watchdog",
     "standby",
     "active-standby",
     "active-passive"
