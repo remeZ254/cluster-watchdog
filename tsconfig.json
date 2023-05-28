@@ -6,6 +6,10 @@
     "noEmit": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es2017"
+    "target": "es2017",
+    "baseUrl": "./",
+    "paths": {
+      "cluster-watchdog": ["src/index.ts"]
+    }
   }
 }

@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/node-standby.svg)](https://www.npmjs.com/package/cluster-watchdog)
 [![npm downloads](https://img.shields.io/npm/dm/cluster-watchdog.svg)](https://www.npmjs.com/package/cluster-watchdog)
 
-Cluster Watchdog is package for managing active-standby applications
+Cluster Watchdog is a lightweight package for managing active-standby clusters
 
 ## Installation
 
@@ -30,16 +30,17 @@ pnpm add cluster-watchdog
 ## Usage
 
 ```typescript
-
+import { initWatchdog, runWhenActive } from 'cluster-watchdog';
 import { Client, createClient } from 'node-zookeeper-client';
-import { initWatchdog, runWhenActive } from './watchdog';
 
-const createZookeeperClient = (...args: Parameters<typeof createClient>): Promise<Client> =>
+// Create a ZooKeeper client and connect to it
+const createZookeeperClient = (connectionString: string): Promise<Client> =>
   new Promise<Client>((resolve) => {
-    const client: Client = createClient(...args);
+    const client: Client = createClient(connectionString);
     client.once('connected', () => resolve(client));
   });
 
+// A function that will execute only if the service is the primary/active
 const poller = runWhenActive(async () => {
   try {
     /*
@@ -54,6 +55,7 @@ const poller = runWhenActive(async () => {
 (async () => {
   const client = await createZookeeperClient('localhost:2181');
 
+  // Initiate Watchdog Cluster
   await initWatchdog({
     client,
     sequencePath: '/path',
@@ -61,10 +63,9 @@ const poller = runWhenActive(async () => {
     log: console.log,
   });
 
+  // Call the function
   poller();
 })();
-
-
 ```
 
 ## License

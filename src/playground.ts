@@ -1,9 +1,9 @@
 import { Client, createClient } from 'node-zookeeper-client';
-import { initWatchdog, runWhenActive } from './watchdog';
+import { initWatchdog, runWhenActive } from 'cluster-watchdog';
 
-const createZookeeperClient = (...args: Parameters<typeof createClient>): Promise<Client> =>
+const createZookeeperClient = (connectionString: string): Promise<Client> =>
   new Promise<Client>((resolve) => {
-    const client: Client = createClient(...args);
+    const client: Client = createClient(connectionString);
     client.once('connected', () => resolve(client));
   });
 
