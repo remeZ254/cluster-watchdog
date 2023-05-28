@@ -1,5 +1,11 @@
 # cluster-watchdog
 
+## 0.0.3
+
+### Patch Changes
+
+- 9d69379: fix playground
+
 ## 0.0.2
 
 ### Patch Changes
